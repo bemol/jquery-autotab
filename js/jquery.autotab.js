@@ -46,7 +46,8 @@
             changed: false,
             editable: (e.type === 'text' || e.type === 'password' || e.type === 'textarea' || e.type === 'tel' || e.type === 'number' || e.type === 'email' || e.type === 'search' || e.type === 'url'),
             filterable: (e.type === 'text' || e.type === 'password' || e.type === 'textarea'),
-            tabOnSelect: false
+            tabOnSelect: false,
+            stopOnBackspace: false
         };
 
         // If $.autotab.selectFilterByClas is true and the format not specified, automatically select an element's format based on a matching class name.
@@ -547,7 +548,7 @@
 
                 setSettings(this, { changed: (this.value !== defaults.originalValue) });
 
-                if (this.value.length === 0) {
+                if (this.value.length === 0 && !stopOnBackspace) {
                     $(this).trigger('autotab-previous', defaults);
                     return;
                 }
