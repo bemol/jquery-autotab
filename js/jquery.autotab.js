@@ -548,7 +548,7 @@
 
                 setSettings(this, { changed: (this.value !== defaults.originalValue) });
 
-                if (this.value.length === 0 && !stopOnBackspace) {
+                if (this.value.length === 0 && !defaults.stopOnBackspace) {
                     $(this).trigger('autotab-previous', defaults);
                     return;
                 }
